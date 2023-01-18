@@ -1,0 +1,46 @@
+<%- include('templates/header',{tituloWeb:'pagina de Juego'}); %>
+    <div class="grid text-center" style="--bs-columns: 3;">
+        <img class="p-4" src="https://iconarchive.com/download/i24292/martin-berube/animal/snake.ico" alt="/public/img/snake.ico" width="200" height="200">
+        <div class="grid">
+          <div>
+            <a href="/" class="btn btn-primary btn">Jugar</a>
+            <h1 class="text-primary"><%=titulo_juego%></h1>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Top.</th>
+                    <th scope="col">Nickname</th>
+                    <th scope="col">Mensaje</th>
+                    <th scope="col">Puntaje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <%arrayusuario.sort((o1,o2)=>{%>
+                        <%if(o1.puntaje > o2.puntaje) {%>
+                            <%return -1;%>
+                            <% } else if(o1.puntaje < o2.puntaje) {%>
+                                <%}else {%>
+                                    <%return 0;%>
+                                    <% }%>
+                    <%})%>
+                    <% if (arrayusuario.length >0) { %>
+                        <%i=0%>
+                        <% arrayusuario.forEach(usuarios=> { %> 
+                            <%i=i+1%>
+                            <%if(i<=10){%>
+                            <tr>
+                                <th scope="row"><%=i%></th>
+                                <td><%=usuarios.nombre%></td>
+                                <td><%=usuarios.descripcion%></td>
+                                <td><%=usuarios.puntaje%></td>
+                              </tr>
+                              <%}%>
+                              <% });%>
+                             
+                            <%}%> 
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    <%- include('templates/footer',{footerWeb: 'Footer pagina index'})%>

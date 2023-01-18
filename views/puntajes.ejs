@@ -1,0 +1,66 @@
+<%- include('templates/header',{tituloWeb:'pagina de Juego'}); %>
+    <div class="grid text-center" style="--bs-columns: 3;">
+        <img class="p-4" src="https://iconarchive.com/download/i24292/martin-berube/animal/snake.ico" alt="/public/img/snake.ico" width="200" height="200">
+        <div class="grid">
+          <div>
+            <h1 class="text-primary"><%=titulo_juego%></h1>
+            <h4> Tu puntaje</h4>
+            <button id="btnid" class="btn btn-primary btn-block my-2" data-id="<%=usuario.id%>"><%=usuario.puntaje%></button>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tu</th>
+                     <th scope="col">Nickname</th>
+                    <th scope="col">Mensaje</th>
+                    <th scope="col">:D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">-></th>
+                    <td><%=usuario.nombre%></td>
+                    <td><%=usuario.descripcion%></td>
+                    <td><-</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h1 class="text-primary">¡Los 10 puntajes mas altos!</h1>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Top.</th>
+                    <th scope="col">Nickname</th>
+                    <th scope="col">Mensaje</th>
+                    <th scope="col">Puntaje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <%arrayusuario.sort((o1,o2)=>{%>
+                        <%if(o1.puntaje > o2.puntaje) {%>
+                            <%return -1;%>
+                            <% } else if(o1.puntaje < o2.puntaje) {%>
+                                <%}else {%>
+                                    <%return 0;%>
+                                    <% }%>
+                    <%})%>
+                    <% if (arrayusuario.length >0) { %>
+                        <%i=0%>
+                        <% arrayusuario.forEach(usuarios=> { %> 
+                            <%i=i+1%>
+                            <%if(i<=10){%>
+                            <tr>
+                                <th scope="row"><%=i%></th>
+                                <td><%=usuarios.nombre%></td>
+                                <td><%=usuarios.descripcion%></td>
+                                <td><%=usuarios.puntaje%></td>
+                              </tr>
+                              <%}%>
+                              <% });%>
+                             
+                            <%}%> 
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    <%- include('templates/footer',{footerWeb: 'Footer pagina index'})%>

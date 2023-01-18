@@ -1,0 +1,23 @@
+<%- include('templates/header',{tituloWeb:'Datos para jugar'}); %>
+    <div class="grid text-center" style="--bs-columns: 3;">
+          <img class="p-4" src="https://iconarchive.com/download/i24292/martin-berube/animal/snake.ico" alt="/public/img/snake.ico">
+          <div class="grid">
+            <div>
+                <form action="" method="POST">
+                    <div class="mb-3">
+                      <label class="form-label">Nickname</label>
+                      <input type="text" class="form-control" name="nombre" aria-describedby="emailHelp" required>     
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label ">Mensaje</label>
+                      <input type="text" class="form-control" name="descripcion" required>
+                      <div id="emailHelp" class="form-text">Se mostrara a los demas jugadores!</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Jugar</button>
+                    <br> <br>
+                    <a href="puntajes-vanilla.ejs" type="submit" class="btn btn-primary">Ver los mejores puntajes</a>
+                  </form>
+            </div>
+          </div>
+        </div>
+      <%- include('templates/footer',{footerWeb: 'Footer pagina index'})%>

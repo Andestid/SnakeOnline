@@ -1,0 +1,16 @@
+<%- include('templates/header',{tituloWeb:'pagina de Juego'}); %>
+    <div class="grid text-center" style="--bs-columns: 3;">
+        <img class="p-4" src="https://iconarchive.com/download/i24292/martin-berube/animal/snake.ico" alt="/public/img/snake.ico" width="200" height="200">
+        <div class="grid">
+          <div>
+            <h3 class="text-primary">¡Obten un puntaje alto!</h1>
+            <button id="btnid" class="btn btn-primary btn-block my-2" data-id="<%=usuario.id%>"><%=usuario.nombre%></button>
+            <a href="puntajes/<%=usuario.id%>" class="btn btn-primary btn-block my-2"> Ver puntajes mas altos</a>
+            <h4><%=titulo_juego%></h4>
+            <canvas id="game" width="300" height="200"></canvas>
+            <div class="font-weight-bold" id="puntaje"><h1>0</h1></div>
+            <script src="/js/game.js"></script>
+          </div>
+        </div>
+      </div>
+    <%- include('templates/footer',{footerWeb: 'Footer pagina index'})%>
